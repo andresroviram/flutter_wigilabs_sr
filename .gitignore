@@ -34,6 +34,7 @@ migrate_working_dir/
 /build_web/
 /coverage/
 apps/client-app/build/
+apps/client-app/build_web/
 packages/**/build/
 
 # Generated files
@@ -62,9 +63,7 @@ app.*.map.json
 
 # Drift web worker compilado (artefacto de build, regenerar con setup_web.sh)
 **/web/drift_worker.dart.js
-# Pero mantener los archivos de soporte necesarios
-!**/web/drift_worker.dart.js.map
-!**/web/drift_worker.dart.js.deps
+**/web/drift_worker.dart.js.map
 
 # Local environment variables (gitignore todos excepto .env.example)
 .env

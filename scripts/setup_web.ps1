@@ -5,7 +5,7 @@ $SQLITE3_VERSION = "2.4.6"
 
 # Navegar a la app principal
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
-Set-Location (Join-Path $ScriptDir "..\apps\app")
+Set-Location (Join-Path $ScriptDir "..\apps\client-app")
 
 Write-Host "Configurando Drift Web Support..." -ForegroundColor Cyan
 Write-Host ""
@@ -37,6 +37,12 @@ try {
         Copy-Item "build_web\drift_worker.dart.js" -Destination "web\drift_worker.dart.js" -Force
         $size = [math]::Round((Get-Item "web\drift_worker.dart.js").Length / 1KB, 2)
         Write-Host "   ✓ drift_worker.dart.js compilado ($size KB)" -ForegroundColor Green
+        
+        # Copiar archivo .map si existe (para debugging)
+        if (Test-Path "build_web\drift_worker.dart.js.map") {
+            Copy-Item "build_web\drift_worker.dart.js.map" -Destination "web\drift_worker.dart.js.map" -Force
+            Write-Host "   ✓ drift_worker.dart.js.map copiado" -ForegroundColor Green
+        }
     } else {
         throw "No se generó el archivo worker"
     }
