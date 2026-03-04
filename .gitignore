@@ -62,6 +62,9 @@ app.*.map.json
 
 # Drift web worker compilado (artefacto de build, regenerar con setup_web.sh)
 **/web/drift_worker.dart.js
+# Pero mantener los archivos de soporte necesarios
+!**/web/drift_worker.dart.js.map
+!**/web/drift_worker.dart.js.deps
 
 # Local environment variables (gitignore todos excepto .env.example)
 .env
